@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Justyna Słota | SpatulaPuff</title>
   <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -75,90 +76,57 @@
 
     .menu-toggle span {
       position: absolute;
+      left: 5px;
       width: 24px;
       height: 3px;
       background: white;
       border-radius: 999px;
-      transition: transform 0.4s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease, left 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+      transition: 0.3s ease;
       box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
 
     .menu-toggle span:nth-child(1) {
-      transform: translateY(-7px);
+      top: 8px;
     }
 
     .menu-toggle span:nth-child(2) {
-      transform: translateY(0);
+      top: 15px;
     }
 
     .menu-toggle span:nth-child(3) {
-      transform: translateY(7px);
+      top: 22px;
     }
 
     .menu-toggle.active span:nth-child(1) {
-      transform: translateY(0);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      left: 3px;
-      top: 13px;
+      transform: rotate(45deg);
+      top: 15px;
     }
 
     .menu-toggle.active span:nth-child(2) {
-      transform: rotate(45deg);
-      width: 24px;
+      opacity: 0;
     }
 
     .menu-toggle.active span:nth-child(3) {
       transform: rotate(-45deg);
-      width: 24px;
-    }
-
-    .menu-toggle::before,
-    .menu-toggle::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      background: white;
-      border-radius: 50%;
-      transition: all 0.35s ease;
-      opacity: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    }
-
-    .menu-toggle.active::before {
-      width: 8px;
-      height: 8px;
-      opacity: 1;
-      top: 3px;
-      left: 13px;
-    }
-
-    .menu-toggle.active::after {
-      width: 8px;
-      height: 8px;
-      opacity: 1;
-      bottom: 3px;
-      left: 13px;
+      top: 15px;
     }
 
     .side-menu {
       position: fixed;
       top: 0;
       left: 0;
-      width: 290px;
-      max-width: 82vw;
+      width: 280px;
+      max-width: 80vw;
       height: 100vh;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
       box-shadow: 18px 0 45px rgba(31,18,78,0.18);
       padding: 90px 24px 24px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       transform: translateX(-100%);
-      transition: transform 0.4s ease;
+      transition: transform 0.35s ease;
       z-index: 1001;
     }
 
@@ -766,7 +734,7 @@
           <a href="#cele" onclick="closeMenu()">Moje cele</a>
           <a href="#zainteresowania" onclick="closeMenu()">Zainteresowania</a>
           <a href="#marka" onclick="closeMenu()">O marce</a>
-          <a href="galeria.html">Galeria</a>
+          <a href="galeria.html" onclick="closeMenu()">Galeria</a>
           <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
         </div>
 
@@ -815,7 +783,7 @@
               <span>🎨 Kreatywność</span>
               <span>📄 Praca z dokumentami</span>
               <span>✨ Estetyka projektów</span>
-              <span>🔪 Gotowanie</span>
+              <span>🍳 Gotowanie</span>
               <span>🎮 Gaming</span>
             </div>
           </section>
@@ -922,13 +890,9 @@
     handleScroll();
 
     function toggleMenu() {
-      const menu = document.getElementById("sideMenu");
-      const overlay = document.getElementById("menuOverlay");
-      const toggle = document.getElementById("menuToggle");
-
-      menu.classList.toggle("open");
-      overlay.classList.toggle("show");
-      toggle.classList.toggle("active");
+      document.getElementById("sideMenu").classList.toggle("open");
+      document.getElementById("menuOverlay").classList.toggle("show");
+      document.getElementById("menuToggle").classList.toggle("active");
     }
 
     function closeMenu() {
