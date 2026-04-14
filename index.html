@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justyna Słota | SpatulaPuff</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #222;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .page-bg {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+        linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 50px;
+      background: rgba(77, 55, 170, 0.32);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 8px 20px rgba(30,18,78,0.14);
+      overflow: hidden;
+    }
+
+    .top-nav-inner {
+      max-width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 18px;
+      position: relative;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%) translateX(-90px);
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      transition: transform 0.45s ease, opacity 0.35s ease;
+    }
+
+    .nav-title {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%) translateX(110px);
+      text-align: right;
+      opacity: 0;
+      transition: transform 0.45s ease, opacity 0.35s ease;
+      line-height: 1;
+    }
+
+    .top-nav.scrolled .nav-logo {
+      transform: translateY(-50%) translateX(0);
+      opacity: 1;
+    }
+
+    .top-nav.scrolled .nav-title {
+      transform: translateY(-50%) translateX(0);
+      opacity: 1;
+    }
+
+    .mini-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.96);
+      border-radius: 10px;
+      padding: 4px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+    }
+
+    .mini-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.2px;
+    }
+
+    .mini-brand {
+      font-family: 'Dancing Script', cursive;
+      font-size: 18px;
+      color: #f8dbff;
+      margin-top: 1px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+
+    .hero {
+      padding: 54px 0 18px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      transition: transform 0.45s ease, opacity 0.35s ease, filter 0.35s ease;
+    }
+
+    .hero.compact .hero-inner {
+      transform: translateY(-36px) scale(0.88);
+      opacity: 0;
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    .logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .logo {
+      width: 182px;
+      height: auto;
+      object-fit: contain;
+      background: rgba(255,255,255,0.95);
+      padding: 12px;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(31,18,78,0.22);
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 60px;
+      line-height: 1.05;
+      color: white;
+      letter-spacing: 0.4px;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .subtitle {
+      margin: 10px 0 0;
+      font-family: 'Dancing Script', cursive;
+      font-size: 35px;
+      color: #fbe2ff;
+      text-shadow: 0 4px 14px rgba(0,0,0,0.14);
+    }
+
+    .hero-text {
+      max-width: 760px;
+      margin: 14px auto 0;
+      color: rgba(255,255,255,0.96);
+      font-size: 18px;
+      line-height: 1.8;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .main-card {
+      margin-top: 26px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 22px 60px rgba(32,18,80,0.22);
+      border: 1px solid rgba(255,255,255,0.28);
+      backdrop-filter: blur(10px);
+    }
+
+    .intro {
+      padding: 52px 34px 42px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(248,249,255,0.96), rgba(255,255,255,0.98));
+      border-bottom: 1px solid rgba(118,75,162,0.10);
+    }
+
+    .intro h2,
+    .section h3,
+    .contact-box h3 {
+      margin-top: 0;
+      font-family: 'Playfair Display', serif;
+      color: #3f2c67;
+    }
+
+    .intro h2 {
+      font-size: 36px;
+      margin-bottom: 18px;
+    }
+
+    .fancy-text {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: 'Dancing Script', cursive;
+      font-size: 33px;
+      line-height: 1.7;
+      color: #5b447b;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .section {
+      padding: 34px 30px;
+      border-bottom: 1px solid rgba(118,75,162,0.10);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .section:nth-child(odd) {
+      border-right: 1px solid rgba(118,75,162,0.10);
+    }
+
+    .section:hover {
+      background: rgba(246,241,255,0.72);
+      transform: translateY(-2px);
+    }
+
+    .section h3 {
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .section p {
+      margin: 0;
+      color: #51496a;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skills span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(102,126,234,0.20);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skills span:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(102,126,234,0.24);
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 42px 30px 46px;
+      background: linear-gradient(180deg, rgba(248,249,255,0.98), rgba(240,235,255,0.95));
+    }
+
+    .contact-box h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .contact-text {
+      color: #5b516d;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    .contact-form {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(118,75,162,0.18);
+      background: rgba(255,255,255,0.96);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      color: #3c2e5f;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 6px 16px rgba(80,57,145,0.05);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #764ba2;
+      box-shadow: 0 0 0 4px rgba(118,75,162,0.10);
+      transform: translateY(-1px);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      box-shadow: 0 14px 26px rgba(102,126,234,0.24);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 30px rgba(102,126,234,0.28);
+      opacity: 0.98;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 10px 8px;
+      color: rgba(255,255,255,0.92);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav {
+        height: 46px;
+      }
+
+      .mini-logo {
+        width: 34px;
+        height: 34px;
+      }
+
+      .mini-name {
+        font-size: 15px;
+      }
+
+      .mini-brand {
+        font-size: 16px;
+      }
+
+      .logo {
+        width: 148px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .subtitle {
+        font-size: 28px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .intro {
+        padding: 40px 22px 34px;
+      }
+
+      .intro h2 {
+        font-size: 30px;
+      }
+
+      .fancy-text {
+        font-size: 25px;
+      }
+
+      .sections {
+        grid-template-columns: 1fr;
+      }
+
+      .section:nth-child(odd) {
+        border-right: none;
+      }
+
+      .section {
+        padding: 28px 22px;
+      }
+
+      .contact-box {
+        padding: 36px 22px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg">
+    <div class="top-nav" id="topNav">
+      <div class="top-nav-inner">
+        <div class="nav-logo">
+          <img src="logo.png" alt="SpatulaPuff Logo" class="mini-logo">
+        </div>
+        <div class="nav-title">
+          <div class="mini-name">Justyna Słota</div>
+          <div class="mini-brand">SpatulaPuff</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <header class="hero" id="hero">
+        <div class="hero-inner">
+          <div class="logo-wrap">
+            <img src="logo.png" alt="SpatulaPuff Logo" class="logo">
+          </div>
+          <h1>Justyna Słota</h1>
+          <p class="subtitle">SpatulaPuff</p>
+          <p class="hero-text">Estetyka, kreatywność i własny styl w jednej przestrzeni.</p>
+        </div>
+      </header>
+
+      <main class="main-card">
+        <section class="intro">
+          <h2>O mnie</h2>
+          <p class="fancy-text">
+            Cześć! Nazywam się Justyna. Jestem osobą ambitną, kreatywną i otwartą na rozwój.
+            Interesuję się językami, nauką oraz tworzeniem ciekawych projektów. SpatulaPuff
+            to moja przestrzeń do pokazywania pomysłów, inspiracji i własnej estetyki.
+          </p>
+        </section>
+
+        <div class="sections">
+          <section class="section">
+            <h3>Moje umiejętności</h3>
+            <div class="skills">
+              <span>🇬🇧 Język angielski</span>
+              <span>💬 Komunikacja</span>
+              <span>📅 Organizacja</span>
+              <span>🎨 Kreatywność</span>
+              <span>📄 Praca z dokumentami</span>
+              <span>✨ Estetyka projektów</span>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3>Moje cele</h3>
+            <p>
+              Chcę rozwijać swoje umiejętności, zdobywać nowe doświadczenia i tworzyć projekty,
+              które są estetyczne, dopracowane i zapadają w pamięć.
+            </p>
+          </section>
+
+          <section class="section">
+            <h3>Zainteresowania</h3>
+            <p>
+              Interesują mnie języki, kultura, rozwój osobisty, estetyczne projekty internetowe
+              oraz tworzenie własnej, spójnej marki.
+            </p>
+          </section>
+
+          <section class="section">
+            <h3>O marce SpatulaPuff</h3>
+            <p>
+              SpatulaPuff to połączenie lekkości, kreatywności i indywidualnego stylu.
+              To przestrzeń, w której mogę pokazać siebie i własne pomysły w eleganckiej formie.
+            </p>
+          </section>
+        </div>
+
+        <section class="contact-box">
+          <h3>Kontakt</h3>
+          <p class="contact-text">Napisz do mnie bezpośrednio przez formularz</p>
+
+          <form class="contact-form" action="https://formsubmit.co/js92744@stud.uws.edu.pl" method="POST">
+            <input type="text" name="name" placeholder="Twoje imię" required>
+            <input type="email" name="email" placeholder="Twój email" required>
+            <textarea name="message" placeholder="Twoja wiadomość" required></textarea>
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Nowa wiadomość ze strony SpatulaPuff">
+            <input type="hidden" name="_template" value="table">
+            <button type="submit" class="button">Wyślij wiadomość</button>
+          </form>
+        </section>
+      </main>
+
+      <footer>
+        &copy; 2026 Justyna Słota | SpatulaPuff
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const topNav = document.getElementById('topNav');
+    const hero = document.getElementById('hero');
+
+    function handleScroll() {
+      const y = window.scrollY;
+
+      if (y > 120) {
+        topNav.classList.add('scrolled');
+        hero.classList.add('compact');
+      } else {
+        topNav.classList.remove('scrolled');
+        hero.classList.remove('compact');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  </script>
+</body>
+</html>
