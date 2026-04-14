@@ -31,6 +31,14 @@
         linear-gradient(135deg, #667eea, #764ba2);
     }
 
+    .site-hidden {
+      visibility: hidden;
+    }
+
+    .site-visible {
+      visibility: visible;
+    }
+
     .top-nav {
       position: sticky;
       top: 0;
@@ -475,14 +483,6 @@
       line-height: 1.6;
     }
 
-    .site-hidden {
-      visibility: hidden;
-    }
-
-    .site-visible {
-      visibility: visible;
-    }
-
     @keyframes loginFade {
       from {
         opacity: 0;
@@ -588,9 +588,7 @@
         </form>
 
         <div class="login-error" id="loginError"></div>
-        <div class="login-note">
-          Dostęp prywatny
-        </div>
+        <div class="login-note">Dostęp prywatny</div>
       </div>
     </div>
   </div>
@@ -726,22 +724,22 @@
       unlockSite();
     }
 
-    const topNav = document.getElementById('topNav');
-    const hero = document.getElementById('hero');
+    const topNav = document.getElementById("topNav");
+    const hero = document.getElementById("hero");
 
     function handleScroll() {
       const y = window.scrollY;
 
       if (y > 120) {
-        topNav.classList.add('scrolled');
-        hero.classList.add('compact');
+        topNav.classList.add("scrolled");
+        hero.classList.add("compact");
       } else {
-        topNav.classList.remove('scrolled');
-        hero.classList.remove('compact');
+        topNav.classList.remove("scrolled");
+        hero.classList.remove("compact");
       }
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
   </script>
 </body>
