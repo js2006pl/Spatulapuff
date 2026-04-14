@@ -48,20 +48,157 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 8px 20px rgba(30,18,78,0.14);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .top-nav-inner {
       max-width: 1280px;
       height: 100%;
       margin: 0 auto;
-      padding: 0 18px;
+      padding: 0 18px 0 64px;
       position: relative;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1003;
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 24px;
+      height: 3px;
+      background: white;
+      border-radius: 999px;
+      transition: transform 0.4s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease, left 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-7px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(7px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: 3px;
+      top: 13px;
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      transform: rotate(45deg);
+      width: 24px;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      width: 24px;
+    }
+
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.35s ease;
+      opacity: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+
+    .menu-toggle.active::before {
+      width: 8px;
+      height: 8px;
+      opacity: 1;
+      top: 3px;
+      left: 13px;
+    }
+
+    .menu-toggle.active::after {
+      width: 8px;
+      height: 8px;
+      opacity: 1;
+      bottom: 3px;
+      left: 13px;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 290px;
+      max-width: 82vw;
+      height: 100vh;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 18px 0 45px rgba(31,18,78,0.18);
+      padding: 90px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+      z-index: 1001;
+    }
+
+    .side-menu.open {
+      transform: translateX(0);
+    }
+
+    .side-menu a {
+      text-decoration: none;
+      color: #3f2c67;
+      font-weight: 600;
+      font-size: 17px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .side-menu a:hover {
+      background: rgba(118,75,162,0.10);
+      transform: translateX(4px);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 12, 55, 0.28);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .menu-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .nav-logo {
       position: absolute;
-      left: 18px;
+      left: 68px;
       top: 50%;
       transform: translateY(-50%) translateX(-90px);
       display: flex;
@@ -499,6 +636,23 @@
         height: 46px;
       }
 
+      .menu-toggle {
+        left: 14px;
+      }
+
+      .top-nav-inner {
+        padding-left: 56px;
+      }
+
+      .side-menu {
+        width: 250px;
+        padding-top: 80px;
+      }
+
+      .side-menu a {
+        font-size: 16px;
+      }
+
       .mini-logo {
         width: 34px;
         height: 34px;
@@ -510,6 +664,10 @@
 
       .mini-brand {
         font-size: 16px;
+      }
+
+      .nav-logo {
+        left: 58px;
       }
 
       .logo {
@@ -596,9 +754,27 @@
   <div class="page-bg site-hidden" id="siteContent">
     <div class="top-nav" id="topNav">
       <div class="top-nav-inner">
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="side-menu" id="sideMenu">
+          <a href="#o-mnie" onclick="closeMenu()">O mnie</a>
+          <a href="#umiejetnosci" onclick="closeMenu()">Umiejętności</a>
+          <a href="#cele" onclick="closeMenu()">Moje cele</a>
+          <a href="#zainteresowania" onclick="closeMenu()">Zainteresowania</a>
+          <a href="#marka" onclick="closeMenu()">O marce</a>
+          <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
+        </div>
+
+        <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
         <div class="nav-logo">
           <img src="logo.png" alt="SpatulaPuff Logo" class="mini-logo">
         </div>
+
         <div class="nav-title">
           <div class="mini-name">Justyna Słota</div>
           <div class="mini-brand">SpatulaPuff</div>
@@ -619,7 +795,7 @@
       </header>
 
       <main class="main-card">
-        <section class="intro">
+        <section class="intro" id="o-mnie">
           <h2>O mnie</h2>
           <p class="fancy-text">
             Cześć! Nazywam się Justyna. Jestem osobą ambitną, kreatywną i otwartą na rozwój.
@@ -629,7 +805,7 @@
         </section>
 
         <div class="sections">
-          <section class="section">
+          <section class="section" id="umiejetnosci">
             <h3>Moje umiejętności</h3>
             <div class="skills">
               <span>🇬🇧 Język angielski</span>
@@ -641,7 +817,7 @@
             </div>
           </section>
 
-          <section class="section">
+          <section class="section" id="cele">
             <h3>Moje cele</h3>
             <p>
               Chcę rozwijać swoje umiejętności, zdobywać nowe doświadczenia i tworzyć projekty,
@@ -649,7 +825,7 @@
             </p>
           </section>
 
-          <section class="section">
+          <section class="section" id="zainteresowania">
             <h3>Zainteresowania</h3>
             <p>
               Interesują mnie języki, kultura, rozwój osobisty, estetyczne projekty internetowe
@@ -657,7 +833,7 @@
             </p>
           </section>
 
-          <section class="section">
+          <section class="section" id="marka">
             <h3>O marce SpatulaPuff</h3>
             <p>
               SpatulaPuff to połączenie lekkości, kreatywności i indywidualnego stylu.
@@ -666,7 +842,7 @@
           </section>
         </div>
 
-        <section class="contact-box">
+        <section class="contact-box" id="kontakt">
           <h3>Kontakt</h3>
           <p class="contact-text">Napisz do mnie bezpośrednio przez formularz</p>
 
@@ -741,6 +917,22 @@
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
+
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      const overlay = document.getElementById("menuOverlay");
+      const toggle = document.getElementById("menuToggle");
+
+      menu.classList.toggle("open");
+      overlay.classList.toggle("show");
+      toggle.classList.toggle("active");
+    }
+
+    function closeMenu() {
+      document.getElementById("sideMenu").classList.remove("open");
+      document.getElementById("menuOverlay").classList.remove("show");
+      document.getElementById("menuToggle").classList.remove("active");
+    }
   </script>
 </body>
 </html>
