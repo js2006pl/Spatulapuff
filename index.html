@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Justyna Słota | SpatulaPuff</title>
+  <meta name="robots" content="noindex, nofollow">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -355,6 +357,143 @@
       font-size: 14px;
     }
 
+    #loginOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+        linear-gradient(135deg, #667eea, #764ba2);
+      padding: 20px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(32,18,80,0.28);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      animation: loginFade 0.45s ease;
+    }
+
+    .login-top {
+      background: linear-gradient(135deg, rgba(102,126,234,0.95), rgba(118,75,162,0.95));
+      padding: 28px 24px 22px;
+      text-align: center;
+      color: white;
+    }
+
+    .login-logo {
+      width: 92px;
+      height: 92px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.96);
+      border-radius: 20px;
+      padding: 8px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+      margin-bottom: 16px;
+    }
+
+    .login-top h2 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .login-brand {
+      margin-top: 6px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #ffe6ff;
+    }
+
+    .login-body {
+      padding: 28px 26px 30px;
+    }
+
+    .login-text {
+      text-align: center;
+      color: #5b516d;
+      margin: 0 0 20px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(118,75,162,0.18);
+      background: rgba(255,255,255,0.98);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      color: #3c2e5f;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 6px 16px rgba(80,57,145,0.05);
+    }
+
+    .login-form input:focus {
+      border-color: #764ba2;
+      box-shadow: 0 0 0 4px rgba(118,75,162,0.10);
+      transform: translateY(-1px);
+    }
+
+    .login-btn {
+      width: 100%;
+    }
+
+    .login-error {
+      min-height: 22px;
+      text-align: center;
+      color: #d62839;
+      font-size: 14px;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    .login-note {
+      text-align: center;
+      color: #7a728f;
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .site-hidden {
+      visibility: hidden;
+    }
+
+    .site-visible {
+      visibility: visible;
+    }
+
+    @keyframes loginFade {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     @media (max-width: 768px) {
       .top-nav {
         height: 46px;
@@ -417,11 +556,46 @@
       .contact-box {
         padding: 36px 22px 40px;
       }
+
+      .login-top h2 {
+        font-size: 28px;
+      }
+
+      .login-brand {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page-bg">
+  <div id="loginOverlay">
+    <div class="login-card">
+      <div class="login-top">
+        <img src="logo.png" alt="SpatulaPuff Logo" class="login-logo">
+        <h2>Justyna Słota</h2>
+        <div class="login-brand">SpatulaPuff</div>
+      </div>
+
+      <div class="login-body">
+        <p class="login-text">
+          Dostęp do strony jest chroniony. Wpisz login i hasło, aby przejść dalej.
+        </p>
+
+        <form class="login-form" onsubmit="return handleLogin(event)">
+          <input type="text" id="loginInput" placeholder="Login" autocomplete="username" required>
+          <input type="password" id="passwordInput" placeholder="Hasło" autocomplete="current-password" required>
+          <button type="submit" class="button login-btn">Zaloguj się</button>
+        </form>
+
+        <div class="login-error" id="loginError"></div>
+        <div class="login-note">
+          Dostęp prywatny
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-bg site-hidden" id="siteContent">
     <div class="top-nav" id="topNav">
       <div class="top-nav-inner">
         <div class="nav-logo">
@@ -517,6 +691,41 @@
   </div>
 
   <script>
+    const VALID_LOGIN = "justyna";
+    const VALID_PASSWORD = "spatulapuff123";
+
+    const loginOverlay = document.getElementById("loginOverlay");
+    const siteContent = document.getElementById("siteContent");
+    const loginError = document.getElementById("loginError");
+    const loginInput = document.getElementById("loginInput");
+    const passwordInput = document.getElementById("passwordInput");
+
+    function unlockSite() {
+      loginOverlay.style.display = "none";
+      siteContent.classList.remove("site-hidden");
+      siteContent.classList.add("site-visible");
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const login = loginInput.value.trim();
+      const password = passwordInput.value;
+
+      if (login === VALID_LOGIN && password === VALID_PASSWORD) {
+        sessionStorage.setItem("spatulapuff_access", "granted");
+        unlockSite();
+      } else {
+        loginError.textContent = "Niepoprawny login lub hasło.";
+      }
+
+      return false;
+    }
+
+    if (sessionStorage.getItem("spatulapuff_access") === "granted") {
+      unlockSite();
+    }
+
     const topNav = document.getElementById('topNav');
     const hero = document.getElementById('hero');
 
