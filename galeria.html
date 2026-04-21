@@ -4,254 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galeria | SpatulaPuff</title>
-<meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
-    linear-gradient(135deg, #667eea, #764ba2);
-  color: #222;
+  font-family: Arial;
+  background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-.top-bar {
+.top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background: rgba(77, 55, 170, 0.32);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.14);
-  box-shadow: 0 8px 20px rgba(30,18,78,0.14);
   color: white;
-}
-
-.top-bar img {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: white;
-  padding: 4px;
-  object-fit: contain;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.brand-text {
-  line-height: 1;
-}
-
-.brand-text .name {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.brand-text .sub {
-  font-family: 'Dancing Script', cursive;
-  font-size: 18px;
-  color: #f8dbff;
-  margin-top: 3px;
 }
 
 .back {
-  color: white;
   text-decoration: none;
-  background: rgba(255,255,255,0.16);
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.back:hover {
-  background: rgba(255,255,255,0.24);
-  transform: translateY(-1px);
-}
-
-.hero {
-  text-align: center;
   color: white;
-  padding: 40px 20px 25px;
+  background: rgba(255,255,255,0.2);
+  padding: 10px 15px;
+  border-radius: 10px;
 }
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  margin: 0 0 10px;
-  text-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.hero p {
-  margin: 0;
-  font-size: 18px;
-  color: rgba(255,255,255,0.95);
-}
-
-.gallery {
-  max-width: 1100px;
-  margin: 0 auto 50px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 22px 60px rgba(32,18,80,0.22);
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 15px;
 }
 
-.item {
-  overflow: hidden;
-  border-radius: 18px;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(80,57,145,0.12);
-  background: #f3f3f3;
-}
-
-.item img {
+img {
   width: 100%;
-  height: 240px;
+  height: 220px;
   object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.item img:hover {
-  transform: scale(1.05);
+  border-radius: 15px;
+  cursor: pointer;
 }
 
 .lightbox {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.88);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  z-index: 9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
 
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  max-width:90%;
+  max-height:90%;
 }
 
-.lightbox.show {
-  display: flex;
-}
-
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .hero h1 {
-    font-size: 38px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .item img {
-    height: 220px;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">
-  <div class="brand">
-    <img src="logo.png" alt="Logo">
-    <div class="brand-text">
-      <div class="name">Justyna Słota</div>
-      <div class="sub">SpatulaPuff</div>
-    </div>
-  </div>
-
-  <a href="index.html" class="back">← Powrót</a>
+<div class="top">
+  <h2>Galeria</h2>
+  <a href="index.html" class="back">Powrót</a>
 </div>
 
-<div class="hero">
-  <h1>Galeria</h1>
-  <p>Moje zdjęcia i inspiracje</p>
-</div>
-
-<div class="gallery">
+<div class="container">
   <div class="grid">
-    <div class="item">
-      <img src="foto1.jpg" alt="Zdjęcie 1" onclick="openImg(this.src)">
-    </div>
 
-    <div class="item">
-      <img src="foto2.jpg" alt="Zdjęcie 2" onclick="openImg(this.src)">
-    </div>
+    <img src="foto1.jpg" onclick="openImg(this.src)">
+    <img src="foto2.jpg" onclick="openImg(this.src)">
+    <img src="foto3.jpg" onclick="openImg(this.src)">
+    <img src="foto4.jpg" onclick="openImg(this.src)">
+    <img src="foto5.jpg" onclick="openImg(this.src)">
 
-    <div class="item">
-      <img src="foto3.jpg" alt="Zdjęcie 3" onclick="openImg(this.src)">
-    </div>
-
-    <div class="item">
-      <img src="foto4.jpg" alt="Zdjęcie 4" onclick="openImg(this.src)">
-    </div>
-
-    <div class="item">
-      <img src="foto5.jpg" alt="Zdjęcie 5" onclick="openImg(this.src)">
-    </div>
-
-    <div class="item">
-      <img src="foto6.jpg" alt="Zdjęcie 6" onclick="openImg(this.src)">
-    </div>
   </div>
 </div>
 
 <div class="lightbox" id="lightbox" onclick="closeImg()">
-  <img id="lightbox-img" alt="Powiększone zdjęcie">
+  <img id="big">
 </div>
 
 <script>
 function openImg(src) {
-  document.getElementById("lightbox").classList.add("show");
-  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("big").src = src;
 }
 
 function closeImg() {
-  document.getElementById("lightbox").classList.remove("show");
+  document.getElementById("lightbox").style.display = "none";
 }
 </script>
 
