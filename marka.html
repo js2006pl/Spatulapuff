@@ -1,117 +1,201 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>O marce | SpatulaPuff</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
-        linear-gradient(135deg, #667eea, #764ba2);
-      color: #222;
-    }
-    .top-bar {
-      position: sticky;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px;
-      background: rgba(77, 55, 170, 0.32);
-      backdrop-filter: blur(12px);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.96);
-      border-radius: 10px;
-      padding: 4px;
-    }
-    .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
-      color: white;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .brand-sub {
-      font-family: 'Dancing Script', cursive;
-      font-size: 20px;
-      color: #f8dbff;
-      line-height: 1;
-      margin-top: 3px;
-    }
-    .back-link {
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.14);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 600;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 16px 60px;
-    }
-    .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 28px;
-      padding: 40px 30px;
-      box-shadow: 0 22px 60px rgba(32,18,80,0.22);
-    }
-    h1 {
-      margin: 0 0 16px;
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      color: #3f2c67;
-      text-align: center;
-    }
-    .text {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #51496a;
-      line-height: 1.9;
-      font-size: 18px;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O marce | SpatulaPuff</title>
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.10), transparent 28%),
+    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+    linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* NAVBAR */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 58px;
+  background: rgba(77, 55, 170, 0.32);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 20px rgba(30,18,78,0.14);
+}
+
+.top-nav-inner {
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.96);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+}
+
+.brand-text {
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.brand-sub {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  color: #f8dbff;
+  margin-top: 2px;
+}
+
+.back {
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.18);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.back:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  color: white;
+  padding: 34px 20px 18px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.hero p {
+  margin: 0;
+  font-size: 17px;
+  color: rgba(255,255,255,0.95);
+}
+
+/* CONTENT */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(32,18,80,0.20);
+}
+
+.text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #4a3f6b;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="top-bar">
+
+<!-- NAV -->
+<div class="top-nav">
+  <div class="top-nav-inner">
     <div class="brand">
       <img src="logo.png" alt="Logo">
-      <div>
+      <div class="brand-text">
         <div class="brand-name">Justyna Słota</div>
         <div class="brand-sub">SpatulaPuff</div>
       </div>
     </div>
-    <a href="index.html" class="back-link">← Powrót</a>
-  </div>
 
-  <div class="container">
-    <div class="card">
-      <h1>O marce SpatulaPuff</h1>
-      <div class="text">
-        SpatulaPuff to połączenie lekkości, kreatywności i indywidualnego stylu.
-        To przestrzeń, w której mogę pokazać siebie i własne pomysły w eleganckiej formie.
-        Marka łączy estetykę, charakter i spójność wizualną, tworząc miejsce, które odzwierciedla mój styl.
-      </div>
-    </div>
+    <a href="index.html" class="back">← Powrót</a>
   </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>O marce</h1>
+  <p>SpatulaPuff – moja przestrzeń, mój styl, moja droga</p>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="text">
+    SpatulaPuff to nie tylko nazwa – to moja własna przestrzeń twórcza, w której łączę estetykę, kreatywność i indywidualny styl. 
+    Powstała z potrzeby wyrażenia siebie oraz pokazania świata widzianego przez pryzmat moich doświadczeń, zainteresowań i wrażliwości.
+
+    <br><br>
+
+    Sama nazwa niesie w sobie lekkość, swobodę i nutę dystansu, a jednocześnie odzwierciedla moje podejście do życia – 
+    nieszablonowe, kreatywne i otwarte na zmiany. SpatulaPuff nie jest zamkniętym projektem – to przestrzeń, która rozwija się razem ze mną.
+
+    <br><br>
+
+    Tworzę ją jako miejsce, w którym estetyka spotyka się z autentycznością. Każdy element – od formy wizualnej po sposób prezentacji – 
+    jest częścią spójnej całości, mającej oddawać mój charakter i sposób postrzegania świata.
+
+    <br><br>
+
+    W przyszłości chciałabym stopniowo otworzyć tę przestrzeń na innych i udostępnić ją szerszemu gronu odbiorców. 
+    Moim celem jest rozwój na tyle świadomy i stabilny, aby móc swobodnie zarządzać własnymi zasobami oraz stworzyć miejsce, 
+    które będzie funkcjonowało niezależnie – również poprzez własną domenę, dostępną dla większej liczby osób.
+
+    <br><br>
+
+    To dopiero początek – SpatulaPuff będzie się rozwijać, ewoluować i nabierać znaczenia wraz z kolejnymi etapami mojej drogi.
+  </div>
+</div>
+
 </body>
 </html>
