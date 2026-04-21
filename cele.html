@@ -1,117 +1,319 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moje cele | SpatulaPuff</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
-        linear-gradient(135deg, #667eea, #764ba2);
-      color: #222;
-    }
-    .top-bar {
-      position: sticky;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px;
-      background: rgba(77, 55, 170, 0.32);
-      backdrop-filter: blur(12px);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.96);
-      border-radius: 10px;
-      padding: 4px;
-    }
-    .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
-      color: white;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .brand-sub {
-      font-family: 'Dancing Script', cursive;
-      font-size: 20px;
-      color: #f8dbff;
-      line-height: 1;
-      margin-top: 3px;
-    }
-    .back-link {
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.14);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 600;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 16px 60px;
-    }
-    .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 28px;
-      padding: 40px 30px;
-      box-shadow: 0 22px 60px rgba(32,18,80,0.22);
-    }
-    h1 {
-      margin: 0 0 16px;
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      color: #3f2c67;
-      text-align: center;
-    }
-    .text {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #51496a;
-      line-height: 1.9;
-      font-size: 18px;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moje cele | SpatulaPuff</title>
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.10), transparent 28%),
+    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+    linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 58px;
+  background: rgba(77, 55, 170, 0.32);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 20px rgba(30,18,78,0.14);
+}
+
+.top-nav-inner {
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.96);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+}
+
+.brand-text {
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.brand-sub {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  color: #f8dbff;
+  margin-top: 2px;
+}
+
+.back {
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.18);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.back:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-1px);
+}
+
+.hero {
+  text-align: center;
+  color: white;
+  padding: 34px 20px 18px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.hero p {
+  margin: 0;
+  font-size: 17px;
+  color: rgba(255,255,255,0.95);
+}
+
+.container {
+  max-width: 1080px;
+  margin: 18px auto 34px;
+  padding: 0 16px;
+}
+
+.main-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(32,18,80,0.20);
+  backdrop-filter: blur(10px);
+}
+
+.intro {
+  padding: 42px 28px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(248,249,255,0.96), rgba(255,255,255,0.98));
+  border-bottom: 1px solid rgba(118,75,162,0.10);
+}
+
+.intro-text {
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: 'Dancing Script', cursive;
+  font-size: 31px;
+  line-height: 1.7;
+  color: #5b447b;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.goal-card {
+  padding: 34px 28px;
+  border-right: 1px solid rgba(118,75,162,0.10);
+  border-bottom: 1px solid rgba(118,75,162,0.10);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.goal-card:last-child {
+  border-right: none;
+}
+
+.goal-card:hover {
+  background: rgba(246,241,255,0.72);
+  transform: translateY(-2px);
+}
+
+.goal-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.goal-title {
+  margin: 0 0 14px;
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  color: #3f2c67;
+}
+
+.goal-text {
+  margin: 0;
+  color: #51496a;
+  line-height: 1.85;
+  font-size: 16px;
+}
+
+.bottom-note {
+  padding: 28px;
+  text-align: center;
+  color: #5b516d;
+  font-size: 16px;
+  line-height: 1.8;
+  background: linear-gradient(180deg, rgba(250,248,255,0.95), rgba(244,239,255,0.95));
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .goal-card {
+    border-right: none;
+  }
+
+  .goal-card:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .top-nav {
+    height: auto;
+  }
+
+  .top-nav-inner {
+    padding: 12px 14px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .intro {
+    padding: 30px 18px 18px;
+  }
+
+  .intro-text {
+    font-size: 24px;
+  }
+
+  .goal-card {
+    padding: 26px 20px;
+  }
+
+  .goal-title {
+    font-size: 22px;
+  }
+
+  .goal-text,
+  .bottom-note {
+    font-size: 15px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="top-bar">
+
+<div class="top-nav">
+  <div class="top-nav-inner">
     <div class="brand">
       <img src="logo.png" alt="Logo">
-      <div>
+      <div class="brand-text">
         <div class="brand-name">Justyna Słota</div>
         <div class="brand-sub">SpatulaPuff</div>
       </div>
     </div>
-    <a href="index.html" class="back-link">← Powrót</a>
-  </div>
 
-  <div class="container">
-    <div class="card">
-      <h1>Moje cele</h1>
-      <div class="text">
-        Chcę rozwijać swoje umiejętności, zdobywać nowe doświadczenia i tworzyć projekty,
-        które są estetyczne, dopracowane i zapadają w pamięć. Zależy mi na budowaniu własnego
-        stylu i tworzeniu rzeczy, które będą spójne, kreatywne i profesjonalne.
+    <a href="index.html" class="back">← Powrót</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Moje cele</h1>
+  <p>To, do czego dążę i co chcę budować krok po kroku</p>
+</div>
+
+<div class="container">
+  <div class="main-card">
+    <div class="intro">
+      <div class="intro-text">
+        Moje cele skupiają się na spokoju, stabilizacji i stopniowym budowaniu lepszego życia.
       </div>
     </div>
+
+    <div class="cards">
+      <div class="goal-card">
+        <div class="goal-icon">🎓</div>
+        <h2 class="goal-title">Studia</h2>
+        <p class="goal-text">
+          Moim celem jest ukończenie studiów możliwie spokojnie, bez większych przeszkód,
+          stresu i komplikacji. Chcę przejść przez ten etap życia w sposób stabilny
+          i z poczuciem satysfakcji.
+        </p>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-icon">💸</div>
+        <h2 class="goal-title">Stabilizacja</h2>
+        <p class="goal-text">
+          Dążę do ustabilizowania się finansowo oraz zdrowotnie. Zależy mi na tym,
+          aby osiągnąć większe poczucie bezpieczeństwa, równowagi i spokoju
+          w codziennym życiu.
+        </p>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-icon">🤝</div>
+        <h2 class="goal-title">Relacje</h2>
+        <p class="goal-text">
+          Ważnym celem jest dla mnie odnalezienie się w relacjach międzyludzkich,
+          budowanie wartościowych więzi, lepsze rozumienie innych ludzi
+          oraz samej siebie.
+        </p>
+      </div>
+    </div>
+
+    <div class="bottom-note">
+      Wierzę, że małe, konsekwentne kroki prowadzą do dużych zmian i prawdziwej stabilizacji.
+    </div>
   </div>
+</div>
+
 </body>
 </html>
