@@ -1,117 +1,401 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zainteresowania | SpatulaPuff</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
-        linear-gradient(135deg, #667eea, #764ba2);
-      color: #222;
-    }
-    .top-bar {
-      position: sticky;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px;
-      background: rgba(77, 55, 170, 0.32);
-      backdrop-filter: blur(12px);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.96);
-      border-radius: 10px;
-      padding: 4px;
-    }
-    .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
-      color: white;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .brand-sub {
-      font-family: 'Dancing Script', cursive;
-      font-size: 20px;
-      color: #f8dbff;
-      line-height: 1;
-      margin-top: 3px;
-    }
-    .back-link {
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.14);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 600;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 16px 60px;
-    }
-    .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 28px;
-      padding: 40px 30px;
-      box-shadow: 0 22px 60px rgba(32,18,80,0.22);
-    }
-    h1 {
-      margin: 0 0 16px;
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      color: #3f2c67;
-      text-align: center;
-    }
-    .text {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #51496a;
-      line-height: 1.9;
-      font-size: 18px;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zainteresowania | SpatulaPuff</title>
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.10), transparent 28%),
+    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+    linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 58px;
+  background: rgba(77, 55, 170, 0.32);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 20px rgba(30,18,78,0.14);
+}
+
+.top-nav-inner {
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.96);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+}
+
+.brand-text {
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.brand-sub {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  color: #f8dbff;
+  margin-top: 2px;
+}
+
+.back {
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.18);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.back:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-1px);
+}
+
+.hero {
+  text-align: center;
+  color: white;
+  padding: 28px 20px 18px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.hero p {
+  margin: 0;
+  font-size: 17px;
+  color: rgba(255,255,255,0.95);
+}
+
+.container {
+  max-width: 1120px;
+  margin: 18px auto 34px;
+  background: rgba(255,255,255,0.94);
+  padding: 20px;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(32,18,80,0.20);
+  backdrop-filter: blur(10px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #f2f2f2;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.45s ease, filter 0.35s ease;
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.50), rgba(0,0,0,0.05), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.caption {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.35s ease;
+  z-index: 2;
+  pointer-events: none;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+}
+
+.item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.08) saturate(1.05);
+}
+
+.item:hover::after {
+  opacity: 1;
+}
+
+.item:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(8,8,16,0.92);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+.lightbox-inner {
+  position: relative;
+  max-width: 92vw;
+  max-height: 92vh;
+  animation: zoomIn 0.28s ease;
+}
+
+.lightbox img {
+  max-width: 92vw;
+  max-height: 72vh;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.38);
+  display: block;
+}
+
+.lightbox-caption {
+  margin-top: 14px;
+  color: white;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: left;
+  max-width: 92vw;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+}
+
+.close-btn {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #333;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.close-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.86);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item img {
+    height: 170px;
+  }
+}
+
+@media (max-width: 560px) {
+  .top-nav {
+    height: auto;
+  }
+
+  .top-nav-inner {
+    padding: 12px 14px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .container {
+    margin: 16px 12px 24px;
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item img {
+    height: 200px;
+  }
+
+  .lightbox img {
+    max-height: 60vh;
+  }
+
+  .lightbox-caption {
+    font-size: 14px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="top-bar">
+
+<div class="top-nav">
+  <div class="top-nav-inner">
     <div class="brand">
       <img src="logo.png" alt="Logo">
-      <div>
+      <div class="brand-text">
         <div class="brand-name">Justyna Słota</div>
         <div class="brand-sub">SpatulaPuff</div>
       </div>
     </div>
-    <a href="index.html" class="back-link">← Powrót</a>
-  </div>
 
-  <div class="container">
-    <div class="card">
-      <h1>Zainteresowania</h1>
-      <div class="text">
-        Interesują mnie języki, kultura, rozwój osobisty, estetyczne projekty internetowe,
-        gotowanie, gaming oraz tworzenie własnej, spójnej marki. Lubię łączyć kreatywność
-        z estetyką i nadawać projektom własny charakter.
-      </div>
+    <a href="index.html" class="back">← Powrót</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Zainteresowania</h1>
+  <p>Moje pasje, inspiracje i obszary, które najbardziej mnie interesują</p>
+</div>
+
+<div class="container">
+  <div class="grid">
+    <div class="item" onclick="openImg('fotos1.jpg', 'Języki')">
+      <img src="fotos1.jpg" alt="Języki">
+      <div class="caption">Języki</div>
+    </div>
+
+    <div class="item" onclick="openImg('fotos2.jpg', 'Kultura')">
+      <img src="fotos2.jpg" alt="Kultura">
+      <div class="caption">Kultura</div>
+    </div>
+
+    <div class="item" onclick="openImg('fotos3.jpg', 'Rozwój osobisty')">
+      <img src="fotos3.jpg" alt="Rozwój osobisty">
+      <div class="caption">Rozwój osobisty</div>
+    </div>
+
+    <div class="item" onclick="openImg('fotos4.jpg', 'Projekty estetyczne')">
+      <img src="fotos4.jpg" alt="Projekty estetyczne">
+      <div class="caption">Projekty estetyczne</div>
+    </div>
+
+    <div class="item" onclick="openImg('fotos5.jpg', 'Tworzenie marki')">
+      <img src="fotos5.jpg" alt="Tworzenie marki">
+      <div class="caption">Tworzenie marki</div>
     </div>
   </div>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeImg(event)">
+  <div class="lightbox-inner">
+    <button class="close-btn" onclick="forceClose()">×</button>
+    <img id="big" alt="Powiększone zdjęcie">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+function openImg(src, caption) {
+  document.getElementById("big").src = src;
+  document.getElementById("lightboxCaption").textContent = caption;
+  document.getElementById("lightbox").classList.add("show");
+}
+
+function closeImg(event) {
+  if (event.target.id === "lightbox") {
+    document.getElementById("lightbox").classList.remove("show");
+  }
+}
+
+function forceClose() {
+  document.getElementById("lightbox").classList.remove("show");
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    document.getElementById("lightbox").classList.remove("show");
+  }
+});
+</script>
+
 </body>
 </html>
