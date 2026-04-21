@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galeria | SpatulaPuff</title>
+<title>Galeria</title>
 <link rel="icon" href="favicon.png">
 
 <style>
@@ -16,22 +16,21 @@ body {
 .top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
+  padding: 15px;
   color: white;
 }
 
 .back {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
   background: rgba(255,255,255,0.2);
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 10px;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 20px auto;
+  max-width: 900px;
+  margin: auto;
   background: white;
   padding: 20px;
   border-radius: 20px;
@@ -43,7 +42,7 @@ body {
   gap: 15px;
 }
 
-img {
+.grid img {
   width: 100%;
   height: 250px;
   object-fit: cover;
@@ -53,19 +52,21 @@ img {
 
 .lightbox {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.9);
-  display:none;
-  justify-content:center;
-  align-items:center;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .lightbox img {
-  max-width:90%;
-  max-height:90%;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
 }
 </style>
 </head>
@@ -79,29 +80,30 @@ img {
 
 <div class="container">
   <div class="grid">
-
     <img src="foto1.jpg" onclick="openImg(this.src)">
     <img src="foto2.jpg" onclick="openImg(this.src)">
     <img src="foto3.jpg" onclick="openImg(this.src)">
     <img src="foto4.jpg" onclick="openImg(this.src)">
     <img src="foto5.jpg" onclick="openImg(this.src)">
-
   </div>
 </div>
 
-<div class="lightbox" id="lightbox" onclick="closeImg()">
+<div class="lightbox" id="lightbox">
   <img id="big">
 </div>
 
 <script>
 function openImg(src) {
-  document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("big").src = src;
+  const lightbox = document.getElementById("lightbox");
+  const big = document.getElementById("big");
+
+  big.src = src;
+  lightbox.style.display = "flex";
 }
 
-function closeImg() {
-  document.getElementById("lightbox").style.display = "none";
-}
+document.getElementById("lightbox").addEventListener("click", function() {
+  this.style.display = "none";
+});
 </script>
 
 </body>
