@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galeria | SpatulaPuff</title>
 <link rel="icon" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -21,23 +21,59 @@ body {
     linear-gradient(135deg, #667eea, #764ba2);
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 22px;
-  color: white;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 58px;
+  background: rgba(77, 55, 170, 0.32);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 20px rgba(30,18,78,0.14);
 }
 
-.top h2 {
-  margin: 0;
+.top-nav-inner {
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.96);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+}
+
+.brand-text {
+  line-height: 1;
+}
+
+.brand-name {
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  letter-spacing: 0.3px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.brand-sub {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  color: #f8dbff;
+  margin-top: 2px;
 }
 
 .back {
@@ -55,9 +91,29 @@ body {
   transform: translateY(-1px);
 }
 
+.hero {
+  text-align: center;
+  color: white;
+  padding: 28px 20px 18px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.hero p {
+  margin: 0;
+  font-size: 17px;
+  color: rgba(255,255,255,0.95);
+}
+
 .container {
   max-width: 1120px;
-  margin: 26px auto;
+  margin: 18px auto 34px;
   background: rgba(255,255,255,0.94);
   padding: 20px;
   border-radius: 28px;
@@ -152,10 +208,25 @@ body {
 
 .lightbox img {
   max-width: 92vw;
-  max-height: 88vh;
+  max-height: 72vh;
   border-radius: 20px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.38);
   display: block;
+}
+
+.lightbox-caption {
+  margin-top: 14px;
+  color: white;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: left;
+  max-width: 92vw;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
 
 .close-btn {
@@ -200,16 +271,27 @@ body {
 }
 
 @media (max-width: 560px) {
-  .top {
-    padding: 14px 16px;
+  .top-nav {
+    height: auto;
   }
 
-  .top h2 {
-    font-size: 24px;
+  .top-nav-inner {
+    padding: 12px 14px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 15px;
   }
 
   .container {
-    margin: 18px 12px;
+    margin: 16px 12px 24px;
     padding: 14px;
     border-radius: 22px;
   }
@@ -221,45 +303,67 @@ body {
   .item img {
     height: 200px;
   }
+
+  .lightbox img {
+    max-height: 60vh;
+  }
+
+  .lightbox-caption {
+    font-size: 14px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">
-  <h2>Galeria</h2>
-  <a href="index.html" class="back">Powrót</a>
+<div class="top-nav">
+  <div class="top-nav-inner">
+    <div class="brand">
+      <img src="logo.png" alt="Logo">
+      <div class="brand-text">
+        <div class="brand-name">Justyna Słota</div>
+        <div class="brand-sub">SpatulaPuff</div>
+      </div>
+    </div>
+
+    <a href="index.html" class="back">← Powrót</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Galeria</h1>
+  <p>Moje zdjęcia i ważne momenty</p>
 </div>
 
 <div class="container">
   <div class="grid">
-    <div class="item" onclick="openImg('foto1.jpg')">
+    <div class="item" onclick="openImg('foto1.jpg', 'Odbiór dyplomu/certyfikatu z warsztatów muzyki ludowej z projektu Małopolskiego Centrum Kultury z siedzibą w Nowym Sączu „Matecznik tradycji”.')">
       <img src="foto1.jpg" alt="Zdjęcie 1">
       <div class="caption">Zdjęcie 1</div>
     </div>
 
-    <div class="item" onclick="openImg('foto2.jpg')">
+    <div class="item" onclick="openImg('foto2.jpg', 'Zdjęcie grupowe z ówczesną kierowniczką i założycielką zespołu folklorystycznego „Bobrowianie” - śp. Haliną Żeleźnik.')">
       <img src="foto2.jpg" alt="Zdjęcie 2">
       <div class="caption">Zdjęcie 2</div>
     </div>
 
-    <div class="item" onclick="openImg('foto3.jpg')">
+    <div class="item" onclick="openImg('foto3.jpg', 'Zdjęcie po odebraniu duplomu/certyfikatu z projektu „Matecznik tradycji”.')">
       <img src="foto3.jpg" alt="Zdjęcie 3">
       <div class="caption">Zdjęcie 3</div>
     </div>
 
-    <div class="item" onclick="openImg('foto4.jpg')">
+    <div class="item" onclick="openImg('foto4.jpg', 'Zdjęcie grupowe z zespołem folklorystycznym „Bobrowianie” w Grecji.')">
       <img src="foto4.jpg" alt="Zdjęcie 4">
       <div class="caption">Zdjęcie 4</div>
     </div>
 
-    <div class="item" onclick="openImg('foto5.jpg')">
+    <div class="item" onclick="openImg('foto5.jpg', 'Konkurs kolęd i pastorałek - dawno temu...')">
       <img src="foto5.jpg" alt="Zdjęcie 5">
       <div class="caption">Zdjęcie 5</div>
     </div>
 
-    <div class="item" onclick="openImg('foto6.jpg')">
+    <div class="item" onclick="openImg('foto6.jpg', 'Prowizoryczny domek w Minecraft : Pocket Edition.')">
       <img src="foto6.jpg" alt="Zdjęcie 6">
       <div class="caption">Zdjęcie 6</div>
     </div>
@@ -270,12 +374,14 @@ body {
   <div class="lightbox-inner">
     <button class="close-btn" onclick="forceClose()">×</button>
     <img id="big" alt="Powiększone zdjęcie">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 </div>
 
 <script>
-function openImg(src) {
+function openImg(src, caption) {
   document.getElementById("big").src = src;
+  document.getElementById("lightboxCaption").textContent = caption;
   document.getElementById("lightbox").classList.add("show");
 }
 
