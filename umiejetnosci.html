@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umiejętności | SpatulaPuff</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+        linear-gradient(135deg, #667eea, #764ba2);
+      color: #222;
+    }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: rgba(77, 55, 170, 0.32);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.96);
+      border-radius: 10px;
+      padding: 4px;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: white;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .brand-sub {
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+      color: #f8dbff;
+      line-height: 1;
+      margin-top: 3px;
+    }
+    .back-link {
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.14);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 16px 60px;
+    }
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 28px;
+      padding: 40px 30px;
+      box-shadow: 0 22px 60px rgba(32,18,80,0.22);
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: #3f2c67;
+      text-align: center;
+    }
+    .lead {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #5b516d;
+      line-height: 1.8;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+    .skills span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(102,126,234,0.20);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="brand">
+      <img src="logo.png" alt="Logo">
+      <div>
+        <div class="brand-name">Justyna Słota</div>
+        <div class="brand-sub">SpatulaPuff</div>
+      </div>
+    </div>
+    <a href="index.html" class="back-link">← Powrót</a>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h1>Moje umiejętności</h1>
+      <p class="lead">To obszary, w których rozwijam się najbardziej i które najlepiej pokazują mój styl pracy oraz zainteresowania.</p>
+      <div class="skills">
+        <span>🇬🇧 Język angielski</span>
+        <span>💬 Komunikacja</span>
+        <span>📅 Organizacja</span>
+        <span>🎨 Kreatywność</span>
+        <span>📄 Praca z dokumentami</span>
+        <span>✨ Estetyka projektów</span>
+        <span>🍳 Gotowanie</span>
+        <span>🎮 Gaming</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
